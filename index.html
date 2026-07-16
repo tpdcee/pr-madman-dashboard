@@ -2,11 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>PR & Influence Calendar</title>
 
   <style>
+    @font-face {
+      font-family: "Mofugu Sans";
+      src: url("./assets/fonts/Mofugu-Regular.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -14,7 +26,7 @@
     body {
       margin: 0;
       padding: 24px;
-      font-family: Arial, sans-serif;
+      font-family: "Mofugu Sans", Arial, sans-serif;
       background: #f5f5f5;
       color: #222222;
     }
@@ -31,9 +43,9 @@
     .calendar-container {
       flex: 1;
       min-width: 0;
+      overflow: hidden;
       background: #ffffff;
       border-radius: 8px;
-      overflow: hidden;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     }
 
@@ -55,7 +67,9 @@
 
     .legend h2 {
       margin: 0 0 18px;
+      font-family: "Mofugu Sans", Arial, sans-serif;
       font-size: 18px;
+      font-weight: 400;
     }
 
     .legend-item {
@@ -78,15 +92,15 @@
     }
 
     .jb-color {
-      background: #0A8043;
+      background: #0a8043;
     }
 
     .ally-color {
-      background: #D81B60;
+      background: #d81b60;
     }
 
     .celine-color {
-      background: #EF6C00;
+      background: #ef6c00;
     }
 
     @media (max-width: 900px) {
@@ -136,8 +150,8 @@
         src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FManila&showPrint=0&title=PR%20%26%20Influence%20Calendar%20Overview&src=YWxseS5tYXJ0aW5lekBtYWRtYW5jcmVhdGl2ZXMuY29t&src=Y2VsaW5lLmJhbGJ1ZW5hQG1hZG1hbmNyZWF0aXZlcy5jb20&src=amJAbWFkbWFuY3JlYXRpdmVzLmNvbQ&color=%23d81b60&color=%23ef6c00&color=%230b8043"
         title="PR & Influence Calendar Overview"
         frameborder="0"
-        scrolling="no">
-      </iframe>
+        scrolling="no"
+      ></iframe>
     </section>
 
     <aside class="legend">
