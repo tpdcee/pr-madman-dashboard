@@ -2,13 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>PR & Influence Calendar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Madman PR & Influence team schedule dashboard.">
+  <title>PR & Influence Dashboard</title>
 
   <style>
     @font-face {
@@ -19,32 +15,61 @@
       font-display: swap;
     }
 
-    * {
-      box-sizing: border-box;
+    :root {
+      --page: #f5f5f5;
+      --card: #ffffff;
+      --text: #222222;
+      --muted: #666666;
+      --border: #e6e6e6;
+      --jb: #0b8043;
+      --ally: #d81b60;
+      --celine: #ef6c00;
     }
+
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       padding: 24px;
       font-family: "Mofugu Sans", Arial, sans-serif;
-      background: #f5f5f5;
-      color: #222222;
+      background: var(--page);
+      color: var(--text);
+    }
+
+    .dashboard {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .dashboard-header { margin-bottom: 20px; }
+
+    .dashboard-header h1 {
+      margin: 0 0 6px;
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    .dashboard-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
     }
 
     .calendar-layout {
       display: flex;
       align-items: flex-start;
       gap: 24px;
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
     }
 
     .calendar-container {
       flex: 1;
       min-width: 0;
       overflow: hidden;
-      background: #ffffff;
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     }
@@ -56,20 +81,35 @@
       border: 0;
     }
 
+    .calendar-help {
+      margin: 0;
+      padding: 12px 16px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
     .legend {
       width: 220px;
       flex-shrink: 0;
       padding: 20px;
-      background: #ffffff;
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     }
 
     .legend h2 {
-      margin: 0 0 18px;
-      font-family: "Mofugu Sans", Arial, sans-serif;
+      margin: 0 0 6px;
       font-size: 18px;
       font-weight: 400;
+    }
+
+    .legend-note {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 12px;
     }
 
     .legend-item {
@@ -80,99 +120,76 @@
       font-size: 14px;
     }
 
-    .legend-item:last-child {
-      margin-bottom: 0;
-    }
+    .legend-item:last-child { margin-bottom: 0; }
 
     .legend-color {
-      width: 16px;
-      height: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 22px;
       flex-shrink: 0;
-      border-radius: 2px;
+      border-radius: 3px;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
     }
 
-    .jb-color {
-      background: #0a8043;
-    }
-
-    .ally-color {
-      background: #d81b60;
-    }
-
-    .celine-color {
-      background: #ef6c00;
-    }
+    .jb-color { background: var(--jb); }
+    .ally-color { background: var(--ally); }
+    .celine-color { background: var(--celine); }
 
     @media (max-width: 900px) {
-      .calendar-layout {
-        flex-direction: column;
-      }
-
-      .calendar-container,
-      .legend {
-        width: 100%;
-      }
-
-      .legend {
+      .calendar-layout { flex-direction: column; }
+      .calendar-container, .legend { width: 100%; }
+      .legend { order: -1; }
+      .legend-items {
         display: flex;
         flex-wrap: wrap;
-        align-items: center;
-        gap: 14px 24px;
+        gap: 12px 24px;
       }
-
-      .legend h2 {
-        width: 100%;
-        margin-bottom: 4px;
-      }
-
-      .legend-item {
-        margin-bottom: 0;
-      }
+      .legend-item { margin-bottom: 0; }
     }
 
     @media (max-width: 600px) {
-      body {
-        padding: 12px;
-      }
-
-      .calendar-container iframe {
-        height: 600px;
-      }
+      body { padding: 12px; }
+      .dashboard-header { margin: 8px 4px 16px; }
+      .calendar-container iframe { height: 600px; }
+      .calendar-help { padding: 10px 12px; }
     }
   </style>
 </head>
 
 <body>
-  <main class="calendar-layout">
+  <main class="dashboard">
+    <header class="dashboard-header">
+      <h1>PR &amp; Influence Dashboard</h1>
+      <p>Team schedules and campaign activity at a glance · Asia/Manila (GMT+8)</p>
+    </header>
 
-    <section class="calendar-container">
-      <iframe
-        src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FManila&showPrint=0&title=PR%20%26%20Influence%20Calendar%20Overview&src=YWxseS5tYXJ0aW5lekBtYWRtYW5jcmVhdGl2ZXMuY29t&src=Y2VsaW5lLmJhbGJ1ZW5hQG1hZG1hbmNyZWF0aXZlcy5jb20&src=amJAbWFkbWFuY3JlYXRpdmVzLmNvbQ&color=%23d81b60&color=%23ef6c00&color=%230b8043"
-        title="PR & Influence Calendar Overview"
-        frameborder="0"
-        scrolling="no"
-      ></iframe>
-    </section>
+    <div class="calendar-layout">
+      <section class="calendar-container" aria-label="PR and Influence team calendar">
+        <iframe
+          src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;ctz=Asia%2FManila&amp;showPrint=0&amp;title=PR%20%26%20Influence%20Calendar%20Overview&amp;src=YWxseS5tYXJ0aW5lekBtYWRtYW5jcmVhdGl2ZXMuY29t&amp;src=Y2VsaW5lLmJhbGJ1ZW5hQG1hZG1hbmNyZWF0aXZlcy5jb20&amp;src=amJAbWFkbWFuY3JlYXRpdmVzLmNvbQ&amp;color=%23d81b60&amp;color=%23ef6c00&amp;color=%230b8043"
+          title="PR &amp; Influence Calendar Overview"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+        <p class="calendar-help">Calendar not loading? Sign in to your authorized Madman Google Workspace account, then refresh this page. Browser privacy settings may also block embedded Google Calendar access.</p>
+      </section>
 
-    <aside class="legend">
-      <h2>Legend</h2>
-
-      <div class="legend-item">
-        <span class="legend-color jb-color"></span>
-        <span>JB Suarez</span>
-      </div>
-
-      <div class="legend-item">
-        <span class="legend-color ally-color"></span>
-        <span>Ally Martinez</span>
-      </div>
-
-      <div class="legend-item">
-        <span class="legend-color celine-color"></span>
-        <span>Celine Balbuena</span>
-      </div>
-    </aside>
-
+      <aside class="legend" aria-labelledby="legend-title">
+        <h2 id="legend-title">Legend</h2>
+        <p class="legend-note">Calendar owner</p>
+        <div class="legend-items">
+          <div class="legend-item"><span class="legend-color jb-color" aria-hidden="true">JB</span><span>JB Suarez</span></div>
+          <div class="legend-item"><span class="legend-color ally-color" aria-hidden="true">AM</span><span>Ally Martinez</span></div>
+          <div class="legend-item"><span class="legend-color celine-color" aria-hidden="true">CB</span><span>Celine Balbuena</span></div>
+        </div>
+      </aside>
+    </div>
   </main>
 </body>
 </html>
